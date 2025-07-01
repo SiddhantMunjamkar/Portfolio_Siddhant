@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Canvas } from "@react-three/fiber"
 import { Text, OrbitControls, Float, Environment, Sphere, MeshDistortMaterial } from "@react-three/drei"
-import { Suspense, useRef } from "react"
+import { Suspense, useRef, useEffect } from "react"
 import { useTheme } from "next-themes"
 import { useFrame } from "@react-three/fiber"
 import type * as THREE from "three"
@@ -69,6 +69,15 @@ export default function HeroSection() {
   const scrollToWork = () => {
     document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
   }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Your code that uses window.innerWidth/innerHeight
+      // Example:
+      // x: [0, Math.random() * window.innerWidth],
+      // y: [0, Math.random() * window.innerHeight],
+    }
+  }, []);
 
   return (
     <section
