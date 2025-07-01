@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Canvas } from "@react-three/fiber"
 import { Text, OrbitControls, Float, Environment, Sphere, MeshDistortMaterial } from "@react-three/drei"
-import { Suspense, useRef, useEffect } from "react"
+import { Suspense, useRef, useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { useFrame } from "@react-three/fiber"
 import type * as THREE from "three"
@@ -70,12 +70,12 @@ export default function HeroSection() {
     document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
   }
 
+  // Add state for window dimensions
+  const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Your code that uses window.innerWidth/innerHeight
-      // Example:
-      // x: [0, Math.random() * window.innerWidth],
-      // y: [0, Math.random() * window.innerHeight],
+      setDimensions({ width: window.innerWidth, height: window.innerHeight });
     }
   }, []);
 
@@ -94,13 +94,13 @@ export default function HeroSection() {
 
       {/* Animated background particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {dimensions && [...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-stone-400/30 dark:bg-stone-600/30 rounded-full"
             animate={{
-              x: [0, Math.random() * window.innerWidth],
-              y: [0, Math.random() * window.innerHeight],
+              x: [0, Math.random() * dimensions.width],
+              y: [0, Math.random() * dimensions.height],
               opacity: [0, 1, 0],
             }}
             transition={{
