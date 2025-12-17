@@ -4,6 +4,7 @@ import ProjectShowcase from "@/components/project-showcase"
 import AboutSection from "@/components/about-section"
 import ContactSection from "@/components/contact-section"
 import Navigation from "@/components/navigation"
+import Credentialsection from "@/components/credentials"
 
 export default function Portfolio() {
   return (
@@ -13,6 +14,7 @@ export default function Portfolio() {
         <HeroSection />
         <ProjectShowcase />
         <AboutSection />
+        <Credentialsection />
         <ContactSection />
       </main>
       <footer className="border-t border-stone-200 dark:border-stone-800 py-8 bg-stone-50 dark:bg-stone-950 transition-colors duration-300">

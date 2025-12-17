@@ -4,7 +4,7 @@ import type React from "react"
 
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { Github, Linkedin, Mail, Send } from "lucide-react"
+import { Github, Linkedin, Mail, Send , Twitter} from "lucide-react"
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -30,7 +30,9 @@ export default function ContactSection() {
   const socialLinks = [
     { icon: Github, href: "https://github.com/SiddhantMunjamkar", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/siddhant-munjamkar/", label: "LinkedIn" },
+    {icon: Twitter, href: "https://x.com/Siddhant69401", label: "Twitter" },
     { icon: Mail, href: "mailto:siddhantmunjamkar9316@gmail.com", label: "Email" },
+    
   ]
 
   return (

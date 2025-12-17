@@ -43,7 +43,7 @@ export default function Navigation() {
           </motion.div>
           <div className="flex items-center space-x-6">
             <div className="hidden md:flex space-x-8">
-              {["Work", "About", "Contact"].map((item) => (
+              {["Work", "About","Credentials", "Contact"].map((item) => (
                 <motion.button
                   key={item}
                   whileHover={{ y: -2 }}

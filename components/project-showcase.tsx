@@ -11,7 +11,7 @@ const projects = [
     title: "GitOps Platform",
     description: "A GitOps-based CI/CD pipeline with automated deployments using ArgoCD, Helm, and Kustomize.",
     image: "/images/gitops-technologies.png",
-    tags: ["ArgoCD", "Helm", "Kubernetes", "GitHub Actions", "Prometheus"],
+    tags: ["ArgoCD", "Helm", "Kubernetes", "GitHub Actions", "Prometheus","Grafana"],
     github: "https://github.com/SiddhantMunjamkar/GitOpsNavigator",
     live: "#",
     date: "January 2025",
