@@ -1,46 +1,60 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter, Playfair_Display } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import { Inter, Playfair_Display } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-})
+});
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
-})
+});
 
 export const metadata: Metadata = {
-  title: "Siddhant Munjamkar - Automation Engineer, AI Agent Builder & Web Developer",
+  title: "Siddhant Munjamkar - Software Engineer Full-Stack & Platform Systems",
   description:
-    "Professional portfolio showcasing automation engineering, AI agent development, and scalable web platforms.",
-  keywords: ["creative developer", "digital artist", "web development", "3D design", "portfolio"],
-  authors: [{ name: "Alexandra Chen" }],
+    "Software engineer building production-grade backend systems, scalable web applications, and platform infrastructure.",
+  keywords: [
+    "software engineer",
+    "backend developer",
+    "full stack developer",
+    "systems engineering",
+    "web applications",
+    "microservices",
+    "devops",
+  ],
+  authors: [{ name: "Siddhant Munjamkar" }],
   openGraph: {
-    title: "Siddhant Munjamkar - Automation Engineer",
+    title: "Siddhant Munjamkar | Software Engineer",
     description:
-      "Crafting intelligent systems and scalable web platforms at the crossroads of automation, AI, and infrastructure engineering",
+      "Building reliable backend systems, scalable web applications, and production-ready platforms.",
     type: "website",
   },
-    generator: 'v0.dev'
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange={false}>
+      <body
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange={false}
+        >
           {children}
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
