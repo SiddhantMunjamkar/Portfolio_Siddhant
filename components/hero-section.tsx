@@ -1,32 +1,52 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Canvas } from "@react-three/fiber"
-import { Text, OrbitControls, Float, Environment, Sphere, MeshDistortMaterial } from "@react-three/drei"
-import { Suspense, useRef, useEffect, useState } from "react"
-import { useTheme } from "next-themes"
-import { useFrame } from "@react-three/fiber"
-import type * as THREE from "three"
+import { motion } from "framer-motion";
+import { Canvas } from "@react-three/fiber";
+import {
+  Text,
+  OrbitControls,
+  Float,
+  Environment,
+  Sphere,
+  MeshDistortMaterial,
+} from "@react-three/drei";
+import { Suspense, useRef, useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { useFrame } from "@react-three/fiber";
+import type * as THREE from "three";
 
 function AnimatedSphere() {
-  const meshRef = useRef<THREE.Mesh>(null)
+  const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime) * 0.2
-      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3
+      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime) * 0.2;
+      meshRef.current.rotation.y =
+        Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
     }
-  })
+  });
 
   return (
-    <Sphere ref={meshRef} args={[1, 100, 200]} scale={0.8} position={[3, 0, -2]}>
-      <MeshDistortMaterial color="#78716c" attach="material" distort={0.3} speed={2} roughness={0.4} metalness={0.8} />
+    <Sphere
+      ref={meshRef}
+      args={[1, 100, 200]}
+      scale={0.8}
+      position={[3, 0, -2]}
+    >
+      <MeshDistortMaterial
+        color="#78716c"
+        attach="material"
+        distort={0.3}
+        speed={2}
+        roughness={0.4}
+        metalness={0.8}
+      />
     </Sphere>
-  )
+  );
 }
 
 function FloatingText() {
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
@@ -40,17 +60,20 @@ function FloatingText() {
         CREATIVE
       </Text>
     </Float>
-  )
+  );
 }
 
 function Scene() {
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
   return (
     <>
       <Environment preset={theme === "dark" ? "night" : "dawn"} />
       <ambientLight intensity={theme === "dark" ? 0.3 : 0.5} />
-      <pointLight position={[10, 10, 10]} intensity={theme === "dark" ? 0.8 : 1} />
+      <pointLight
+        position={[10, 10, 10]}
+        intensity={theme === "dark" ? 0.8 : 1}
+      />
       <spotLight
         position={[-10, -10, -10]}
         angle={0.3}
@@ -60,18 +83,26 @@ function Scene() {
       />
       <FloatingText />
       <AnimatedSphere />
-      <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+      <OrbitControls
+        enableZoom={false}
+        enablePan={false}
+        autoRotate
+        autoRotateSpeed={0.5}
+      />
     </>
-  )
+  );
 }
 
 export default function HeroSection() {
   const scrollToWork = () => {
-    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
-  }
+    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   // Add state for window dimensions
-  const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
+  const [dimensions, setDimensions] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -94,26 +125,27 @@ export default function HeroSection() {
 
       {/* Animated background particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {dimensions && [...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-stone-400/30 dark:bg-stone-600/30 rounded-full"
-            animate={{
-              x: [0, Math.random() * dimensions.width],
-              y: [0, Math.random() * dimensions.height],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 5,
-            }}
-            style={{
-              left: Math.random() * 100 + "%",
-              top: Math.random() * 100 + "%",
-            }}
-          />
-        ))}
+        {dimensions &&
+          [...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-stone-400/30 dark:bg-stone-600/30 rounded-full"
+              animate={{
+                x: [0, Math.random() * dimensions.width],
+                y: [0, Math.random() * dimensions.height],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Number.POSITIVE_INFINITY,
+                delay: Math.random() * 5,
+              }}
+              style={{
+                left: Math.random() * 100 + "%",
+                top: Math.random() * 100 + "%",
+              }}
+            />
+          ))}
       </div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
@@ -131,7 +163,7 @@ export default function HeroSection() {
             transition={{ duration: 1, delay: 1 }}
             className="text-xl md:text-2xl text-stone-600 dark:text-stone-400 mb-8 font-light tracking-wide"
           >
-            Automation Engineer, AI Agent Builder & Web Developer
+            Software Engineer Full-Stack & Platform Systems
           </motion.p>
           <motion.p
             initial={{ opacity: 0 }}
@@ -139,8 +171,8 @@ export default function HeroSection() {
             transition={{ duration: 1, delay: 1.2 }}
             className="text-lg text-stone-500 dark:text-stone-500 mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            Crafting intelligent systems and scalable web platforms at the crossroads of automation, AI, and
-            infrastructure engineering.
+            Crafting intelligent systems and scalable web platforms at the
+            crossroads of software, infrastructure, and platform engineering.
           </motion.p>
           <motion.button
             initial={{ opacity: 0, y: 20 }}
@@ -189,5 +221,5 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

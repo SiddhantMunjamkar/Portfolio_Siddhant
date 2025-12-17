@@ -22,7 +22,7 @@ const projects = [
     description:
       "A full-stack exchange system with modular services, real-time market data streaming, and high-frequency trade processing.",
     image: "/images/exchange-system.png",
-    tags: ["Node.js", "JavaScript", "Redis", "WebSocket", "Docker", "Kubernetes"],
+    tags: ["Node.js", "JavaScript", "Redis", "WebSocket", "Docker"],
     github: "https://github.com/SiddhantMunjamkar/Exchange-platform",
     live: "#",
     date: "January 2025",
@@ -33,7 +33,7 @@ const projects = [
     description:
       "A secure transaction platform with wallet transfers, transaction history, and containerized deployment on Kubernetes.",
     image: "/images/paytm-transaction.png",
-    tags: ["TypeScript", "Node.js", "Prisma", "PostgreSQL", "Docker", "Kubernetes"],
+    tags: ["TypeScript", "Node.js", "Prisma", "PostgreSQL", "Docker"],
     github: "https://github.com/SiddhantMunjamkar/Paytm_transaction_app",
     live: "#",
     date: "February 2025",
@@ -98,7 +98,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
             >
               <Github className="w-5 h-5" />
             </motion.a>
-            <motion.a
+            {/* <motion.a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
@@ -107,11 +107,11 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
               className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
             >
               <ExternalLink className="w-5 h-5" />
-            </motion.a>
+            </motion.a> */}
           </motion.div>
-          <div className="absolute top-4 right-4 bg-stone-900/80 dark:bg-stone-950/90 backdrop-blur-sm px-3 py-1 rounded-full">
+          {/* <div className="absolute top-4 right-4 bg-stone-900/80 dark:bg-stone-950/90 backdrop-blur-sm px-3 py-1 rounded-full">
             <span className="text-white text-sm font-medium">{project.date}</span>
-          </div>
+          </div> */}
         </div>
 
         <div className="p-8">
