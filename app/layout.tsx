@@ -34,6 +34,11 @@ export const metadata: Metadata = {
       "Building reliable backend systems, scalable web applications, and production-ready platforms.",
     type: "website",
   },
+  
+  verification: {
+    google: "5pyN-KrRtWJyxuBFJVJnXsw8o2cZhn1LmUtVGX7JvWo",
+  },
+  
 };
 
 export default function RootLayout({
