@@ -1,17 +1,25 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useState } from "react"
-import Image from "next/image"
-import { ExternalLink, Github } from "lucide-react"
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Image from "next/image";
+import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
     id: 1,
     title: "GitOps Platform",
-    description: "A GitOps-based CI/CD pipeline with automated deployments using ArgoCD, Helm, and Kustomize.",
+    description:
+      "A GitOps-based CI/CD pipeline with automated deployments using ArgoCD, Helm, and Kustomize.",
     image: "/images/gitops-technologies.png",
-    tags: ["ArgoCD", "Helm", "Kubernetes", "GitHub Actions", "Prometheus","Grafana"],
+    tags: [
+      "ArgoCD",
+      "Helm",
+      "Kubernetes",
+      "GitHub Actions",
+      "Prometheus",
+      "Grafana",
+    ],
     github: "https://github.com/SiddhantMunjamkar/GitOpsNavigator",
     live: "#",
     date: "January 2025",
@@ -49,10 +57,59 @@ const projects = [
     live: "#",
     date: "July 2025",
   },
-]
+  {
+  id: 5,
+  title: "Scalable Backend API with Rate Limiting & Auth",
+  description:
+    "A production-ready RESTful API with JWT authentication, Google OAuth 2.0 integration, and Redis-based rate limiting using Fixed Window Algorithm. Features IP-based DDoS protection, secure password hashing, and protected routes with horizontal scalability in mind.",
+  image: "/images/hld_of_ratelimiter.png",
+  tags: [
+    "Node.js",
+    "Express",
+    "TypeScript",
+    "PostgreSQL",
+    "Prisma ORM",
+    "Redis",
+    "JWT",
+    "Google OAuth 2.0",
+    "Rate Limiting",
+    "Next.js",
+  ],
+  github:
+    "https://github.com/SiddhantMunjamkar/Rate_limiting_auth_frontend_backend",
+  live: "#",
+  date: "December 2025",
+},
+  {
+    id: 6,
+    title: "Event-Driven Notification System",
+    description:
+      "A production-grade, event-driven notification system designed to reliably deliver Email and SMS notifications using Kafka, Redis, and PostgreSQL. Built with fault tolerance, retries, idempotency, and horizontal scalability in mind.",
+    image: "/images/notification_design_1.png",
+    tags: [
+      "Kafka",
+      "Event-Driven Architecture",
+      "Redis",
+      "PostgreSQL",
+      "Node.js",
+      "Docker",
+      "Distributed Systems",
+    ],
+    github:
+      "https://github.com/SiddhantMunjamkar/Event-Driven-Notification-System",
+    live: "#",
+    date: "July 2025",
+  },
+];
 
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
-  const [isHovered, setIsHovered] = useState(false)
+function ProjectCard({
+  project,
+  index,
+}: {
+  project: (typeof projects)[0];
+  index: number;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -115,8 +172,12 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
         </div>
 
         <div className="p-8">
-          <h3 className="font-serif text-2xl font-semibold mb-3 text-stone-900 dark:text-stone-100">{project.title}</h3>
-          <p className="text-stone-600 dark:text-stone-400 mb-4 leading-relaxed">{project.description}</p>
+          <h3 className="font-serif text-2xl font-semibold mb-3 text-stone-900 dark:text-stone-100">
+            {project.title}
+          </h3>
+          <p className="text-stone-600 dark:text-stone-400 mb-4 leading-relaxed">
+            {project.description}
+          </p>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span
@@ -130,12 +191,15 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
         </div>
       </motion.div>
     </motion.div>
-  )
+  );
 }
 
 export default function ProjectShowcase() {
   return (
-    <section id="work" className="py-24 bg-stone-50 dark:bg-stone-950 transition-colors duration-300">
+    <section
+      id="work"
+      className="py-24 bg-stone-50 dark:bg-stone-950 transition-colors duration-300"
+    >
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -149,8 +213,8 @@ export default function ProjectShowcase() {
           </h2>
           <div className="w-24 h-px bg-stone-400 dark:bg-stone-600 mx-auto mb-8" />
           <p className="text-xl text-stone-600 dark:text-stone-400 max-w-3xl mx-auto leading-relaxed">
-            A curated collection of projects showcasing expertise in automation, infrastructure engineering, and
-            full-stack development.
+            A curated collection of projects showcasing expertise in automation,
+            infrastructure engineering, and full-stack development.
           </p>
         </motion.div>
 
@@ -161,5 +225,5 @@ export default function ProjectShowcase() {
         </div>
       </div>
     </section>
-  )
+  );
 }
