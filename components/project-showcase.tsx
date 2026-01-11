@@ -100,6 +100,27 @@ const projects = [
     live: "#",
     date: "July 2025",
   },
+  {
+  id: 7,
+  title: "High-Performance Real-Time Analytics Dashboard",
+  description:
+    "A Grafana-inspired real-time analytics dashboard built with a custom Canvas rendering engine. Designed to handle high-frequency data streams with worker-based batching, backpressure handling, smooth visualization, and live performance telemetry (FPS, throughput, dropped events) without UI freezes.",
+  image: "/images/image_live_dashboard.png",
+  tags: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Canvas",
+    "Web Workers",
+    "Performance Engineering",
+    "Backpressure",
+    "Real-Time Systems"
+  ],
+  github: "https://github.com/SiddhantMunjamkar/Live_dashboard",
+  live: "#",
+  date: "August 2025",
+}
+
 ];
 
 function ProjectCard({
