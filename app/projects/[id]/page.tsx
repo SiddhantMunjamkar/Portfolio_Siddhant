@@ -7,6 +7,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Github, ExternalLink, ArrowLeft, Mail, Linkedin, Twitter } from "lucide-react";
 import { getProjectById } from "@/lib/projects-data";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 interface PageProps {
   params: {
@@ -31,7 +32,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
     >
       {/* Navigation */}
       <nav className="sticky top-0 z-40 bg-white/50 dark:bg-stone-900/50 backdrop-blur-md border-b border-stone-200/50 dark:border-stone-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between">
           <button
             onClick={() => router.back()}
             className="inline-flex items-center space-x-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors cursor-pointer"
@@ -39,7 +40,9 @@ export default function ProjectDetailPage({ params }: PageProps) {
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Portfolio</span>
           </button>
+           <ThemeToggle/>
         </div>
+       
       </nav>
 
       {/* Hero Section with Background Image */}
@@ -94,6 +97,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               <h2 className="font-serif text-2xl sm:text-3xl font-semibold mb-6">
                 Project Overview
               </h2>
+              <div className="w-24 h-px bg-stone-400 dark:bg-stone-600 mb-8" />
               <p className="text-stone-600 dark:text-stone-400 leading-relaxed whitespace-pre-wrap">
                 {project.longDescription || project.description}
               </p>
@@ -110,6 +114,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               <h2 className="font-serif text-2xl sm:text-3xl font-semibold mb-6">
                 Project Gallery
               </h2>
+              <div className="w-24 h-px bg-stone-400 dark:bg-stone-600 mb-8" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {project.gallery && project.gallery.length > 0 ? (
                   project.gallery.map((image, index) => (
@@ -153,6 +158,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               <h3 className="font-serif text-lg font-semibold mb-6">
                 Project Details
               </h3>
+              <div className="w-24 h-px bg-stone-400 dark:bg-stone-600 mb-8" />
               <div className="space-y-6">
                 <div>
                   <p className="text-xs uppercase font-semibold text-stone-500 dark:text-stone-500 tracking-widest mb-2">

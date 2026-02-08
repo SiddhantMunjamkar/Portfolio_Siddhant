@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { ThemeToggle } from "./theme-toggle"
 
 export default function Navigation() {
@@ -53,6 +54,14 @@ export default function Navigation() {
                   {item}
                 </motion.button>
               ))}
+              <motion.div whileHover={{ y: -2 }}>
+                <Link
+                  href="/resume"
+                  className="text-sm font-medium tracking-wide text-stone-900 dark:text-stone-100 hover:text-stone-600 dark:hover:text-stone-400 transition-colors"
+                >
+                  Resume
+                </Link>
+              </motion.div>
             </div>
             <ThemeToggle />
           </div>
