@@ -1,4 +1,4 @@
-const BASE_URL = process.env.BACKEND_URL || "http://localhost:4000";
+const BASE_URL = process.env.BACKEND_URL;
 
 export async function apiFetch<T>(
   path: string,
