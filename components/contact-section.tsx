@@ -1,39 +1,124 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { motion } from "framer-motion"
-import { useState } from "react"
-import { Github, Linkedin, Mail, Send , Twitter} from "lucide-react"
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Github, Linkedin, Mail, Send, Twitter } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { apiFetch } from "@/lib/api/api";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
-  const [focusedField, setFocusedField] = useState<string | null>(null)
+  });
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+  async function handleSendMessage() {
+    const { name, email, message } = formData;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    // Validation
+    if (!name.trim()) {
+      toast({
+        title: "Name is required",
+        description: "Please enter your name",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!email.trim()) {
+      toast({
+        title: "Email is required",
+        description: "Please enter your email address",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!message.trim()) {
+      toast({
+        title: "Message is required",
+        description: "Please enter your message",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      await apiFetch("/api/v1/message/send-message", {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          email,
+          body: message,
+        }),
+      });
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+        variant: "success",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Failed to send message",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSendMessage();
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/SiddhantMunjamkar", label: "GitHub" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/siddhant-munjamkar/", label: "LinkedIn" },
-    {icon: Twitter, href: "https://x.com/Siddhant69401", label: "Twitter" },
-    { icon: Mail, href: "mailto:siddhantmunjamkar9316@gmail.com", label: "Email" },
-    
-  ]
+    {
+      icon: Github,
+      href: "https://github.com/SiddhantMunjamkar",
+      label: "GitHub",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/siddhant-munjamkar/",
+      label: "LinkedIn",
+    },
+    { icon: Twitter, href: "https://x.com/Siddhant69401", label: "Twitter" },
+    {
+      icon: Mail,
+      href: "mailto:siddhantmunjamkar9316@gmail.com",
+      label: "Email",
+    },
+  ];
 
   return (
     <section
@@ -81,10 +166,13 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-5xl md:text-6xl font-light mb-6">Let's Create Together</h2>
+          <h2 className="font-serif text-5xl md:text-6xl font-light mb-6">
+            Let's Create Together
+          </h2>
           <div className="w-24 h-px bg-stone-400 dark:bg-stone-600 mx-auto mb-8" />
           <p className="text-xl text-stone-300 dark:text-stone-400 max-w-3xl mx-auto leading-relaxed">
-            Have a project in mind? I'd love to hear about it and explore how we can bring your vision to life.
+            Have a project in mind? I'd love to hear about it and explore how we
+            can bring your vision to life.
           </p>
         </motion.div>
 
@@ -97,10 +185,14 @@ export default function ContactSection() {
             className="space-y-8"
           >
             <div>
-              <h3 className="font-serif text-3xl font-semibold mb-6">Get in Touch</h3>
+              <h3 className="font-serif text-3xl font-semibold mb-6">
+                Get in Touch
+              </h3>
               <p className="text-stone-300 dark:text-stone-400 text-lg leading-relaxed mb-8">
-                Whether you're looking to build something new, improve an existing project, or just want to chat about
-                the latest in web technology, I'm always excited to connect with fellow creators and innovators.
+                Whether you're looking to build something new, improve an
+                existing project, or just want to chat about the latest in web
+                technology, I'm always excited to connect with fellow creators
+                and innovators.
               </p>
             </div>
 
@@ -168,7 +260,8 @@ export default function ContactSection() {
                 <motion.label
                   animate={{
                     y: focusedField === "email" || formData.email ? -25 : 0,
-                    scale: focusedField === "email" || formData.email ? 0.85 : 1,
+                    scale:
+                      focusedField === "email" || formData.email ? 0.85 : 1,
                     color: focusedField === "email" ? "#a8a29e" : "#78716c",
                   }}
                   className="absolute left-0 top-4 pointer-events-none origin-left transition-all"
@@ -192,7 +285,8 @@ export default function ContactSection() {
                 <motion.label
                   animate={{
                     y: focusedField === "message" || formData.message ? -25 : 0,
-                    scale: focusedField === "message" || formData.message ? 0.85 : 1,
+                    scale:
+                      focusedField === "message" || formData.message ? 0.85 : 1,
                     color: focusedField === "message" ? "#a8a29e" : "#78716c",
                   }}
                   className="absolute left-0 top-4 pointer-events-none origin-left transition-all"
@@ -203,11 +297,12 @@ export default function ContactSection() {
 
               <motion.button
                 type="submit"
+                disabled={isLoading}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center space-x-3 py-4 px-8 border border-stone-400 dark:border-stone-500 text-stone-50 font-medium tracking-wide hover:bg-stone-50 hover:text-stone-900 dark:hover:bg-stone-100 dark:hover:text-stone-900 transition-all duration-300 group backdrop-blur-sm"
+                className="w-full flex items-center justify-center space-x-3 py-4 px-8 border border-stone-400 dark:border-stone-500 text-stone-50 font-medium tracking-wide hover:bg-stone-50 hover:text-stone-900 dark:hover:bg-stone-100 dark:hover:text-stone-900 transition-all duration-300 group backdrop-blur-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span>Send Message</span>
+                <span>{isLoading ? "Sending..." : "Send Message"}</span>
                 <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </form>
@@ -215,5 +310,5 @@ export default function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
