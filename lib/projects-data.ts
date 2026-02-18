@@ -197,6 +197,33 @@ export const projectsData: Project[] = [
     live: "https://live-dashboard-gamma.vercel.app/",
     date: "August 2025",
   },
+  {
+    id: "8",
+    title: "Email Scheduling & Delivery SaaS Platform",
+    category: "Backend / Distributed Systems",
+    description:
+      "A production-grade SaaS platform for reliable email scheduling, throttled delivery, and large-scale campaign execution.",
+    longDescription:
+      "Email Scheduler is a production-grade email scheduling and delivery platform designed to reliably send large volumes of emails at specific times without loss, duplication, or manual intervention. The system focuses on correctness, scalability, and operational safety — core requirements for real-world email infrastructure.\n\nThe platform allows users to schedule email campaigns, control delivery rates, and monitor scheduled and sent emails through a clean dashboard. Emails are processed asynchronously using Redis-backed queues with delayed jobs, ensuring precise timing and persistence across server restarts. The system remains reliable even under heavy load by enforcing rate limits, maintaining idempotency, and rescheduling emails automatically when limits are exceeded.\n\nDesigned with distributed systems principles, the architecture separates API servers and workers, enabling horizontal scaling and fault tolerance. Restart-safe reconciliation ensures pending jobs resume correctly after failures, making the system suitable for SaaS email automation, outreach tools, and transactional email pipelines.\n\nKey Features\n\n• Schedule emails for future delivery with guaranteed execution\n• Persistent Redis-backed job scheduling using BullMQ (no cron jobs)\n• Restart-safe processing with reconciliation on startup\n• Rate limiting and throttling per sender with automatic rescheduling\n• Idempotent email delivery to prevent duplicates\n• Concurrent workers with configurable throughput\n• Support for multiple senders and campaigns (multi-tenant ready)\n• Dashboard to view scheduled, sending, sent, and failed emails\n• Gmail-like frontend UI with compose, preview, and campaign views\n• Clean separation between API layer and background workers\n• Production-ready architecture for scalable SaaS systems",
+    image: "/images/Email_job_scheduler/Compose_files.png",
+    gallery: ["/images/Email_job_scheduler/system_design_emaijob.png","/images/Email_job_scheduler/image_of_Send_files.png", "/images/Email_job_scheduler/Compose_files.png","/images/Email_job_scheduler/email_image.png","/images/Email_job_scheduler/login_page_job_scheduler.png"],
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Express.js",
+      "BullMQ",
+      "Redis",
+      "PostgreSQL",
+      "Prisma",
+      "Distributed Systems",
+      "Rate Limiting",
+      "Idempotency",
+      "Queue-Based Architecture",
+    ],
+    github: "https://github.com/SiddhantMunjamkar/Email_Job_Schedulers",
+    live: "https://email-job-schedulers.vercel.app/login",
+    date: "February 2026",
+  },
 ];
 
 export function getProjectById(id: string): Project | undefined {

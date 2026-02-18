@@ -121,6 +121,25 @@ const projects = [
     live: "#",
     date: "August 2025",
   },
+  {
+    id: "8",
+    title: "Email Scheduling & Delivery SaaS Platform",
+    description:
+      "A scalable email scheduling platform with delayed delivery, rate limiting, idempotent workers, and restart-safe processing using Redis-backed queues.",
+    image: "/images/Email_job_scheduler/Compose_files.png",
+    tags: [
+      "Next.js",
+      "Express.js",
+      "BullMQ",
+      "Redis",
+      "PostgreSQL",
+      "Prisma",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/SiddhantMunjamkar/Email_Job_Schedulers",
+    live: "#",
+    date: "February 2026",
+  },
 ];
 
 function ProjectCard({
