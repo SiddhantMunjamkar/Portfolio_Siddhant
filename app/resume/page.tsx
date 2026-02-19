@@ -28,7 +28,7 @@ export default function ResumePage() {
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/Full_stack_developer.pdf";
+    link.href = "/SiddhantGM_Resume.pdf";
     link.download = "Siddhant_Munjamkar_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -157,7 +157,7 @@ export default function ResumePage() {
             >
               <iframe
                 ref={iframeRef}
-                src="/Full_stack_developer.pdf#page=1"
+                src="/SiddhantGM_Resume.pdf#page=1"
                 className="w-full h-full border-none"
                 style={{
                   transform: `scale(${scale})`,
@@ -175,7 +175,7 @@ export default function ResumePage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-8 text-center text-sm text-stone-600 dark:text-stone-400"
           >
-            <p>Last updated: January 2025</p>
+            <p>Last updated: January 2026</p>
           </motion.div>
         </div>
       </div>
