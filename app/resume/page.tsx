@@ -175,7 +175,7 @@ export default function ResumePage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-8 text-center text-sm text-stone-600 dark:text-stone-400"
           >
-            <p>Last updated: January 2026</p>
+            <p>Last updated: February 2026</p>
           </motion.div>
         </div>
       </div>
